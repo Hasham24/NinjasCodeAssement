@@ -16,8 +16,8 @@ const useStyle = () => {
       flex: 1,
     },
     text: {
-      color: colors.white,
-      fontSize: fontSize.standard,
+      color: colors.black,
+      fontSize: fontSize.regular,
       fontFamily: fontFamily.PoppinsSemiBold,
       textAlign: 'center',
     },

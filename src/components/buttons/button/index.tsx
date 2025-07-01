@@ -13,7 +13,7 @@ interface IButton extends TouchableOpacityProps {
   text: string;
   textStyle?: StyleProp<TextStyle>;
   hasIcon?: boolean;
-  icon?: JSX.Element;
+  icon?: React.ReactNode;
 }
 
 const Button = (props: IButton) => {
@@ -33,7 +33,8 @@ const Button = (props: IButton) => {
       onPress={onPress}
       style={[styles.container, disabled && styles.disabled, style]}
       disabled={disabled}
-      activeOpacity={0.95}>
+      activeOpacity={0.95}
+    >
       {hasIcon && <View style={styles.iconView}>{icon}</View>}
       <Text style={[styles.text, textStyle]}>{text}</Text>
     </TouchableOpacity>

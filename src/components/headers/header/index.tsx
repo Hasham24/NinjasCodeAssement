@@ -19,6 +19,7 @@ interface IHeader {
   title: string;
   iconColor?: string;
   descriptionText?: string;
+  isBackButton?: boolean;
   containerStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
 }
@@ -31,22 +32,25 @@ const Header: React.FC<IHeader> = props => {
     iconColor = colors.black,
     textStyle,
     descriptionText = '',
+    isBackButton = true,
   } = props;
   const { goBack } = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
     <View style={[styles.container, containerStyle]}>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        style={styles.iconButton}
-        onPress={goBack}
-      >
-        <VectorIcon
-          iconType={ICON_TYPES.Ionicons}
-          name="chevron-back-outline"
-          size={iconSize.regular}
-          color={iconColor}
-        />
-      </TouchableOpacity>
+      {isBackButton && (
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.iconButton}
+          onPress={goBack}
+        >
+          <VectorIcon
+            iconType={ICON_TYPES.Ionicons}
+            name="chevron-back-outline"
+            size={iconSize.regular}
+            color={iconColor}
+          />
+        </TouchableOpacity>
+      )}
       <View style={styles.textContainer}>
         <Text numberOfLines={2} style={[styles.text, textStyle]}>
           {title}
@@ -57,7 +61,7 @@ const Header: React.FC<IHeader> = props => {
           </Text>
         )}
       </View>
-      <View style={styles.empty} />
+      {isBackButton && <View style={styles.empty} />}
     </View>
   );
 };

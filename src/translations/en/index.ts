@@ -1,2 +1,2 @@
-export {default as movie} from './movie.json';
-export {default as checkout} from './checkout.json';
+export { default as movie } from './movie.json';
+export { default as home } from './home.json';
