@@ -1,9 +1,11 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { weatherApi } from '~services';
 import { movieSliceReducer } from './slices';
 
 const reducers = combineReducers({
   movies: movieSliceReducer,
+  [weatherApi.reducerPath]: weatherApi.reducer,
 });
 
 const store = configureStore({
@@ -11,7 +13,7 @@ const store = configureStore({
   middleware: getDefaultMiddleware => {
     const middlewares = getDefaultMiddleware({
       serializableCheck: false,
-    }).concat();
+    }).concat(weatherApi.middleware);
 
     return middlewares;
   },

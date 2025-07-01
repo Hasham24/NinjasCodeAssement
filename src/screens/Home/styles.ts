@@ -13,6 +13,9 @@ const useStyle = () => {
       textAlign: 'center',
       fontWeight: '500',
     },
+    contentContainer: {
+      paddingBottom: 100,
+    },
   });
 };
 export default useStyle;

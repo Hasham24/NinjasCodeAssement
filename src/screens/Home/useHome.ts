@@ -1,3 +1,6 @@
+import { useGetWeatherQuery } from '~services';
+
 export default () => {
-  return {};
+  const { data, isLoading, error } = useGetWeatherQuery();
+  return { data, isLoading, error };
 };
